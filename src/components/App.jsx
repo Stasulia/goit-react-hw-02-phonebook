@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import ContactList from './ContactList/ContactsList';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
+import { Section } from './Section/Section';
 
 export class App extends Component {
   state = {
@@ -49,27 +50,36 @@ export class App extends Component {
           style={{
             height: '100vh',
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
+            marginLeft: 'auto',
+            marginTop: '50px',
+            marginRight: 'auto',
+            padding: '40px 20px',
+            width: '500px',
             fontSize: 40,
             color: '#010101',
           }}
         >
-          <ContactForm onSubmit={this.createContact} />
-          {this.state.contacts.length ? (
-            <h2 className="title">Contacts</h2>
-          ) : (
-            <></>
-          )}
-          {this.state.contacts.length ? (
-            <Filter value={this.state.filter} onChange={this.changeFilter} />
-          ) : (
-            <></>
-          )}
-          <ContactList
-            contacts={filterContact}
-            onDeleteContact={this.deleteContact}
-          />
+          <div className="contactsForm">
+            <ContactForm onSubmit={this.createContact} />
+            {this.state.contacts.length ? (
+              <h2 className="title">Contacts</h2>
+            ) : (
+              <></>
+            )}
+            {this.state.contacts.length ? (
+              <Filter value={this.state.filter} onChange={this.changeFilter} />
+            ) : (
+              <></>
+            )}
+
+            <ContactList
+              contacts={filterContact}
+              onDeleteContact={this.deleteContact}
+            />
+          </div>
         </div>
       </>
     );

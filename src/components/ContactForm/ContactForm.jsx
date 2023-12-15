@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import css from './ContactForm.module.css';
 
 const INITIAL_STATE = {
   name: '',
@@ -23,35 +24,38 @@ class ContactForm extends Component {
       name: '',
       number: '',
     });
-    // this.reset();
   };
-
-  // reset = () => {
-  //   this.setState({
-  //     name: '',
-  //     number: '',
-  //   });
-  // };
 
   render() {
     // const { name, number } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <input
-            type="text"
-            name="name"
-            onChange={this.handleChange}
-            required
-          />
-          <input
-            type="tel"
-            name="number"
-            onChange={this.handleChange}
-            required
-          />
-          <button type="submit">Add Contacts</button>
+      <form className={css.form} onSubmit={this.handleSubmit}>
+        <h2 className="title">Phonebook</h2>
+        <div className={css.contactForm}>
+          <label className={css.label}>
+            Name
+            <input
+              className={css.input}
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              required
+            />
+          </label>
+          <label className={css.label}>
+            Number
+            <input
+              className={css.input}
+              type="text"
+              name="number"
+              value={this.state.number}
+              onChange={this.handleChange}
+              required
+            />
+            <button type="submit">Add Contacts</button>
+          </label>
         </div>
       </form>
     );
