@@ -9,7 +9,8 @@ class ContactForm extends Component {
   state = {
     ...INITIAL_STATE,
   };
-  handleChange = ({ target: { value, name } }) => {
+  handleChange = event => {
+    const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
@@ -22,9 +23,18 @@ class ContactForm extends Component {
       name: '',
       number: '',
     });
+    // this.reset();
   };
+
+  // reset = () => {
+  //   this.setState({
+  //     name: '',
+  //     number: '',
+  //   });
+  // };
+
   render() {
-    // const { name, id } = this.state;
+    // const { name, number } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
