@@ -27,8 +27,6 @@ class ContactForm extends Component {
   };
 
   render() {
-    // const { name, number } = this.state;
-
     return (
       <form className={css.form} onSubmit={this.handleSubmit}>
         <h2 className="title">Phonebook</h2>
